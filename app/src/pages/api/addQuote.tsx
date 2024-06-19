@@ -1,5 +1,5 @@
 import { t } from "elysia";
-import QuoteCard from "../components/quote-card";
+import QuoteCard from "../../components/quote-card";
 
 
 

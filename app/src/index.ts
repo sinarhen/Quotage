@@ -5,12 +5,14 @@ import { html } from "@elysiajs/html";
 
 // Controllers
 import homeController from "./controllers/homeController";
+import staticPlugin from "@elysiajs/static";
 // import TODO: Authentication Controller
 
 
 
 const app = new Elysia();
-app.use(html())
+app.use(html());
+app.use(staticPlugin());
 
 app.use(homeController);
     

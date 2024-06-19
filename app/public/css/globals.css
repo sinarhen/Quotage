@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "FogtwoNo5";
+    src: url("../font/mainFont.otf")
+
+}
+
+
+body {
+    font-family: 'FogtwoNo5';
+}
+
+#quotes {
+    background-color: brown;
+}

@@ -1,6 +1,6 @@
 import {Elysia, t} from "elysia";
 import HomePage from "../pages/home";
-import addQuote, { schema } from "../api/addQuote";
+import addQuote, { schema } from "../pages/api/addQuote";
 
 const homeController = (app: Elysia) => {
     return app

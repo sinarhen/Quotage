@@ -24,9 +24,9 @@ const HomePage = async () => (
               </div>
           </div>
           
-          <div class="w-[70%] h-full">
-            <h1 class="text-right text-4xl">Here are your daily quotes</h1>
-            <div id="quotes" class="grid gap-x-1 gap-y-1 px-2 py-2 lg:grid-cols-2">
+          <div class="w-[70%] h-full lg:px-12 py-12">
+            <h1 class="text-right mb-6 text-6xl italic">Here are your daily quotes</h1>
+            <div id="quotes" class="grid gap-x-1 gap-y-1  lg:grid-cols-2">
               {quotesExamples.map(quoteExample => <QuoteCard {...quoteExample} />)}
             </div>
           </div>
