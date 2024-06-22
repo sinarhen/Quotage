@@ -12,7 +12,11 @@ import staticPlugin from "@elysiajs/static";
 
 const app = new Elysia();
 app.use(html());
-app.use(staticPlugin());
+app.use(staticPlugin({
+  prefix: "/",
+  "noCache": true// ONLY IN DEVELOPMENT
+}));
+console.warn("NO CACHE FOR STATIC IS TRUE!")
 
 app.use(homeController);
     

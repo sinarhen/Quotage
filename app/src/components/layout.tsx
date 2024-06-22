@@ -15,7 +15,7 @@ export default function Layout({
       <script defer src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
       <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="w-full h-full flex">
+    <body class="w-full h-full">
         {children}
     </body>
   </html>
