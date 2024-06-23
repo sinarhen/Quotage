@@ -57,7 +57,7 @@ const AddQuoteForm = ({
             <label for="quote" class="peer-focus:text-white transition-colors duration-300 block mb-2 text-sm font-medium ">Quote</label>
         
         </div>
-        <button type="submit" class="text-white bg-amber-300 hover:bg-amber-400 focus:ring-1 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
+        <button type="submit" class="text-white bg-orange-950 hover:bg-orange-900 transition-colors focus:ring-1 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
     </form>)
 }
 
