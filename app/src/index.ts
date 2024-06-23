@@ -6,14 +6,24 @@ import { html } from "@elysiajs/html";
 // Controllers
 import homeController from "./controllers/homeController";
 import staticPlugin from "@elysiajs/static";
+import { getDbInstance, initializeDb } from "./config/db";
 // import TODO: Authentication Controller
 
 
 
 const app = new Elysia();
+
 app.use(html());
 app.use(staticPlugin());
-console.warn("NO CACHE FOR STATIC IS TRUE!")
+
+
+
+const db = await getDbInstance()
+
+if (process.env.NODE_ENV == "development"){
+  initializeDb(db)
+}
+
 
 app.use(homeController);
     
