@@ -1,9 +1,10 @@
 import AddQuoteForm from "../components/add-quote-form";
 import Layout from "../components/layout";
 import QuoteCard from "../components/quote-card";
-import { quotesExamples } from "../config/test";
+// import { quotesExamples } from "../config/test";
+import { TQuote } from "../config/types";
 
-const HomePage = async () => (
+const HomePage = async (quotes: TQuote[]) => (
       <Layout title="Quotage | Home Page">
         <div class="w-full h-full flex md:flex-row flex-col">
           
@@ -26,7 +27,7 @@ const HomePage = async () => (
           <section class="md:w-[70%] h-full lg:px-12 px-6 py-12">
             <h1 class="md:text-right text-center mb-6  lg:text-5xl md:text-4xl sm:text-3xl text-2xl italic">Here are your daily quotes</h1>
             <div id="quotes" class="grid gap-x-1 gap-y-1  lg:grid-cols-2">
-              {quotesExamples.map(quoteExample => <QuoteCard {...quoteExample} />)}
+              {quotes.map(quoteExample => <QuoteCard {...quoteExample} />)}
             </div>
           </section>
         </div>

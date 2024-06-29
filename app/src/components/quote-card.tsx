@@ -1,22 +1,20 @@
-import Button from "./button";
+import { TQuote } from "../config/types";
 
 export default function QuoteCard({
     quote,
-    name,
-    yearsOfLife,
-}: {
-    quote: string;
-    name: string;
-    yearsOfLife: string;
-}){
+    id,
+    author,
+    birthYear,
+    deathYear
+}: TQuote){
     return (
-        <div class="relative h-[200px] w-full">
+        <div id={id ?? undefined} class="relative h-[200px] w-full">
             <div tabindex="0" class="relative z-10 h-full focus:-translate-y-14 bg-white transition-transform shadow-lg rounded-lg border border-orange-950">
                 <div class="p-6 h-full block w-full overflow-hidden">
                     <h1 class="lg:text-3xl md:text-2xl sm:text-xl text-lg text-zinc-900">
-                        {quote.split(' ').slice(0, 3).join(" ") + "..."}
+                        {quote?.split(' ').slice(0, 3).join(" ") + "..."}
                     </h1>
-                    <p class='text-sm text-gray-400'>by {name}({yearsOfLife})</p>
+                    <p class='text-sm text-gray-400'>by {author}({birthYear} - {deathYear})</p>
                     <hr class='h-px text-gray-400 my-2' />
                     <p class="text-gray-300 italic">{quote}</p>
                 </div>
