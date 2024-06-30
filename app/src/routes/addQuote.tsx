@@ -1,15 +1,15 @@
 import { t } from "elysia";
-import QuoteCard from "../../components/quote-card";
 import {v4 as uuidv4} from 'uuid';
-import { insertQuote } from '../../config/db/quotes';
+import QuoteService from "../services/quoteService";
+import QuoteCard from "../components/quote-card";
 
 
 
 const schema = t.Object({
     quote: t.String(),
     author: t.String(),
-    birthYear: t.Integer(),
-    deathYear: t.Integer(),
+    birthYear: t.Numeric(),
+    deathYear: t.Numeric(),
 });
 
 
@@ -20,19 +20,19 @@ const addQuote = async (body: TSchema) => {
     if (!body.author) {
         // Handle errors
         console.error("Missing name");
-        return;
     }
     if (!body.quote) {
         console.error("Missing quote");
-        return;
     }
     const newQuote = {
         id: uuidv4() as string, 
         ...body
     }
 
-    insertQuote(newQuote)
-
+    var res = await QuoteService.insertQuote(newQuote)
+    if (!res.rowsAffected){
+        return
+    }
     return <QuoteCard {...newQuote}/>
 }
 

@@ -1,16 +1,16 @@
 import {Elysia, t} from "elysia";
-import HomePage from "../pages/home";
-import addQuote, { schema } from "../pages/api/addQuote";
-import { TQuote } from "../config/types";
-import { getAllQuotes } from "../config/db/quotes";
+import QuoteService from "../services/quoteService";
+import Render from "../services/renderService";
+import addQuote, { schema } from "../routes/addQuote";
+
 
 const homeController = async (app: Elysia) => {
-    const quotes = await getAllQuotes();
-
     return app
-        .get("/", async () => await HomePage(quotes))
+        .get("/", Render.root) // Probably this is some really stupid shit but just for testing purposes and my laziness purposes i will leave it here for now
         .post("/add-quote", async ({body}) => await addQuote(body), {
             body: schema
+        }).onError(({code, error}) => {
+            console.log(error)
         })
     
 }

@@ -1,45 +1,11 @@
 import { HTMXSwapAttribute } from '../config/types';
+import { FormInput } from './form-input';
 
 interface AddQuoteFormProps {
     hxPost: string,
     hxTarget: string,
     hxSwap: HTMXSwapAttribute;
 
-}
-
-// TODO USE
-const FormInput = ({
-    id,
-    name,
-    placeholder,
-    label
-}: {
-    id: string,
-    name: string,
-    placeholder: string;
-    label: string;
-}) => {
-    return (
-        <>
-            <input type='text' name={name} id={name} class="
-                bg-zinc-800 
-                border 
-                border-gray-300
-                text-sm 
-                rounded-lg 
-                peer
-                duration-300
-                focus:border-white
-                focus:text-white
-                transition-all 
-                block 
-                w-full 
-                p-2.5
-            " placeholder={placeholder} required />
-            <label for={name} class="peer-focus:text-white transition-colors duration-300 block mb-2 text-sm font-medium ">{label}</label>
-        </>
-        
-    )
 }
 
 const AddQuoteForm = ({
@@ -54,23 +20,11 @@ const AddQuoteForm = ({
     
         class="w-full"> 
         <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90 w-1/2">
-            <input type='text' name='author' id="author" class="
-                bg-zinc-800 
-                border 
-                border-gray-300
-                text-sm 
-                rounded-lg 
-                peer
-                duration-300
-                focus:border-white
-                focus:text-white
-                transition-all 
-                block 
-                w-full 
-                p-2.5
-                " placeholder="Marcus Avrelius" required />
-            <label for="author" class="peer-focus:text-white transition-colors duration-300 block mb-2 text-sm font-medium ">Author</label>
-
+            <FormInput 
+                name='author'
+                placeholder='Marcus Avrelius'
+                label='Author'    
+            />
         </div>
         <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90">
             <textarea cols='40' rows='6' name='quote' id="quote" class="
@@ -90,24 +44,26 @@ const AddQuoteForm = ({
             <label for="quote" class="peer-focus:text-white transition-colors duration-300 block mb-2 text-sm font-medium ">Quote</label>
         
         </div>
-        <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90 w-1/2">
-            <input type='text' name='birthYear' id="birthYear" class="
-                bg-zinc-800 
-                border 
-                border-gray-300
-                text-sm 
-                rounded-lg 
-                peer
-                duration-300
-                focus:border-white
-                focus:text-white
-                transition-all 
-                block 
-                w-full 
-                p-2.5
-                " placeholder="Marcus Avrelius" required />
-            <label for="" class="peer-focus:text-white transition-colors duration-300 block mb-2 text-sm font-medium ">Author</label>
+        <div class="flex sm:flex-row flex-col gap-x-5">
 
+            <div class="mb-2  flex flex-col-reverse text-gray-400 text-opacity-90 w-1/2">
+                <FormInput 
+                        name='birthYear'
+                        type='number'
+                        placeholder='-3200'
+                        label='Birth year'    
+                    />
+            </div>
+
+            
+            <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90 w-1/2">
+                <FormInput 
+                        name='deathYear'
+                        type='number'
+                        placeholder='1223'
+                        label='Death year'    
+                    />
+            </div>
         </div>
         <button type="submit" class="text-white bg-orange-950 hover:bg-orange-900 transition-colors focus:ring-1 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
     </form>)
