@@ -19,7 +19,7 @@ const AddQuoteForm = ({
         hx-swap={hxSwap}
     
         class="w-full"> 
-        <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90 w-1/2">
+        <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90 sm:w-1/2">
             <FormInput 
                 name='author'
                 placeholder='Marcus Avrelius'
@@ -46,7 +46,7 @@ const AddQuoteForm = ({
         </div>
         <div class="flex sm:flex-row flex-col gap-x-5">
 
-            <div class="mb-2  flex flex-col-reverse text-gray-400 text-opacity-90 w-1/2">
+            <div class="mb-2  flex flex-col-reverse text-gray-400 text-opacity-90 sm:w-1/2">
                 <FormInput 
                         name='birthYear'
                         type='number'
@@ -56,7 +56,7 @@ const AddQuoteForm = ({
             </div>
 
             
-            <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90 w-1/2">
+            <div class="mb-2 flex flex-col-reverse text-gray-400 text-opacity-90 sm:w-1/2">
                 <FormInput 
                         name='deathYear'
                         type='number'

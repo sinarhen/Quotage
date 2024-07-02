@@ -5,7 +5,7 @@ export default function Layout({
     title: string
     children: JSX.Element
 }){
-    return <html lang="en">
+    return <html style="height: 100%" lang="en">
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
