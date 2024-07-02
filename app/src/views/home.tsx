@@ -56,11 +56,11 @@ const HomePage = async (quotes: Quote[]) => (
                 </div>
             </aside>
             
-            <section class="md:w-[70%] overflow-y-scroll h-full lg:px-12 px-6 py-12">
+            <section class="md:w-[70%] md:overflow-y-scroll h-full lg:px-14 px-8 py-12">
               <h1 class="md:text-right text-center mb-6  lg:text-5xl md:text-4xl sm:text-3xl text-2xl italic">Here are your daily quotes</h1>
-              <div id="quotes" class="grid gap-x-1 gap-y-1  lg:grid-cols-2">
+              <div id="quotes" class="grid gap-x-3 gap-y-4  lg:grid-cols-2">
                 {quotes.map(quoteExample => <QuoteCard {...quoteExample} />)}
-                {quotes.map(quoteExample => <QuoteCard {...quoteExample} />)}
+                {quotes.map(quoteExample => <QuoteCard {...quoteExample} quote={"Cras ipsum nunc, suscipit non libero quis, gravida venenatis neque. Sed sed dui leo. Sed venenatis scelerisque consectetur. Etiam fringilla varius tristique. Nunc tincidunt mi felis, vitae rutrum erat commodo in. Vivamus nec arcu et urna molestie condimentum vel eget massa. Ut non sollicitudin Etiam ut auctor tellus. Suspendisse blandit diam at erat hendrerit ultricies. Cras sed rutrum dolor, aliquam tincidunt dolor. Proin fermentum arcu nec nisl malesuada bibendum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus a ex ac justo porttitor pharetra sit amet non dui. Sed vehicula at metus at porttitor."} />)}
                 {quotes.map(quoteExample => <QuoteCard {...quoteExample} />)}
                 {quotes.map(quoteExample => <QuoteCard {...quoteExample} />)}
               </div>

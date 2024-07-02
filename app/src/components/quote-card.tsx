@@ -8,15 +8,15 @@ export default function QuoteCard({
     deathYear,
 }: Quote ){
     return (
-        <div id={id ?? undefined} class="relative h-[200px] w-full">
+        <div id={id ?? undefined} class="relative h-full w-full">
             <div tabindex="0" class="relative cursor-pointer z-10 h-full bg-transparent transition-transform  rounded-lg  ">
-                <div class="p-6 h-full block w-full overflow-hidden">
+                <div class="p-6 h-full block w-full">
                     <h1 class="lg:text-3xl md:text-2xl sm:text-xl text-lg text-zinc-900">
                         {quote?.split(' ').slice(0, 3).join(" ") + "..."}
                     </h1>
                     <p class='text-sm text-gray-400'>by {author}({birthYear} - {deathYear})</p>
                     <hr class='h-px text-gray-400 my-2' />
-                    <p class="text-gray-300 italic">{quote}</p>
+                    <p class="text-gray-300 italic min-h-[4.5em] line-clamp-3">{quote}</p>
                     <div class="flex space-x-2 mt-2">
                         <button 
                             class="
