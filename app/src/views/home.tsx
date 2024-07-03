@@ -1,10 +1,11 @@
+import { Quote } from "../../lib/db/schema";
 import AddQuoteForm from "../components/add-quote-form";
 import Layout from "../components/layout";
 import QuoteCard from "../components/quote-card";
 // import { quotesExamples } from "../config/test";
-import { Quote } from '../../db/quotes';
+import { User } from 'lucia';
 
-const HomePage = async (quotes: Quote[]) => (
+const HomePage = async (quotes: Quote[],user: User | null) => (
       <Layout title="Quotage | Home Page">
         <>
         <div class="fixed z-[100] flex md:px-12 md:py-8 px-2 py-3 items-center justify-center w-full h-full bg-black/30 backdrop-blur-sm " id="favourites-modal-wrapper">

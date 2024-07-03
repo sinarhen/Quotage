@@ -1,7 +1,7 @@
 import { ResultSet } from "@libsql/client";
-import { db } from "../../db";
-import quotes from "../../db/quotes";
-import { TQuote } from "../config/types";
+import { db } from "../../lib/db/schema";
+import quotes from "../../lib/db/quotes";
+import { TQuote } from "../../lib/config/types";
 
 abstract class QuoteService {
     static insertQuote = async (quote: TQuote): Promise<ResultSet> => 

@@ -1,4 +1,4 @@
-import { HTMXSwapAttribute } from '../config/types';
+import { HTMXSwapAttribute } from '../../lib/config/types';
 import { FormInput } from './form-input';
 
 interface AddQuoteFormProps {
