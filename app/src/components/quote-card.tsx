@@ -11,7 +11,7 @@ export default function QuoteCard({
         <div id={id ?? undefined} class="relative h-full w-full">
             <div tabindex="0" class="relative cursor-pointer z-10 h-full bg-transparent transition-transform  rounded-lg  ">
                 <div class="p-6 h-full block w-full">
-                    <h1 class="lg:text-3xl md:text-2xl sm:text-xl text-lg text-zinc-900">
+                    <h1 class="lg:text-3xl md:text-2xl sm:text-xl text-lg text-gray-900">
                         {quote?.split(' ').slice(0, 3).join(" ") + "..."}
                     </h1>
                     <p class='text-sm text-gray-400'>by {author}({birthYear} - {deathYear})</p>
