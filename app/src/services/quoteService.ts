@@ -1,10 +1,9 @@
 import { ResultSet } from "@libsql/client";
-import { db } from "../../lib/db/schema";
-import quotes from "../../lib/db/quotes";
-import { TQuote } from "../../lib/config/types";
+import { db, quotes, Quote } from "../../lib/db/schema";
+
 
 abstract class QuoteService {
-    static insertQuote = async (quote: TQuote): Promise<ResultSet> => 
+    static insertQuote = async (quote: Quote): Promise<ResultSet> => 
         await db.insert(quotes).values(quote);
 
     static getAllQuotes = async () => 

@@ -4,7 +4,7 @@ import QuoteService from "./quoteService";
 
 abstract class Render{
     static async root(user: User | null){
-        return HomePage(user, await QuoteService.getAllQuotes())
+        return HomePage(await QuoteService.getAllQuotes(), user)
     }
 }
 

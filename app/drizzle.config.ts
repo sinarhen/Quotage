@@ -1,7 +1,7 @@
 import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
-  schema: './lib/db/index.ts',
+  schema: './lib/db/schema.ts',
   out: './lib/db/migrations',
   driver: "turso",
   dialect: 'sqlite', // 'postgresql' | 'mysql' | 'sqlite'

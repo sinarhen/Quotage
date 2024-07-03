@@ -1,5 +1,5 @@
 import { Config, createClient } from '@libsql/client';
-import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle/dist/drivers/sqlite';
+import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
 import { drizzle } from 'drizzle-orm/libsql';
 import { sql } from 'drizzle-orm/sql/sql';
 import { index, integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core';
@@ -12,11 +12,11 @@ const config: Config = {
     url: process.env.DATABASE_URL,
     authToken: process.env.DATABASE_AUTH_TOKEN,
 };
-export const client = createClient(config);
+const client = createClient(config);
 
 export const db = drizzle(client);
 
-const quotes = sqliteTable("quotes", {
+export const quotes = sqliteTable("quotes", {
     id: text("id"),
     quote: text('quote').notNull(),
     deathYear: integer("death_year"),
@@ -33,11 +33,11 @@ export type Quote = typeof quotes.$inferSelect;
 export type InsertQuote = typeof quotes.$inferInsert;
 
 
-const userTable = sqliteTable("user", {
+export const userTable = sqliteTable("user", {
 	id: text("id").notNull().primaryKey()
 });
 
-const sessionTable = sqliteTable("session", {
+export const sessionTable = sqliteTable("session", {
 	id: text("id").notNull().primaryKey(),
 	userId: text("user_id")
 		.notNull()
