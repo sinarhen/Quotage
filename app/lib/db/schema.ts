@@ -34,7 +34,9 @@ export type InsertQuote = typeof quotes.$inferInsert;
 
 
 export const userTable = sqliteTable("user", {
-	id: text("id").notNull().primaryKey()
+	id: text("id").notNull().primaryKey(),
+    email: text("email").unique(),
+    passwordHash: text("password_hash")
 });
 
 export const sessionTable = sqliteTable("session", {

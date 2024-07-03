@@ -12,6 +12,7 @@
     "@lucia-auth/adapter-drizzle": "^1.0.7",
     "drizzle-orm": "^0.31.2",
     "elysia": "latest",
+    "oslo": "^1.2.1",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
