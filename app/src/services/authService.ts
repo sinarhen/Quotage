@@ -1,5 +1,5 @@
 import { Elysia } from 'elysia';
-import { auth, Auth } from '../../lib/auth';
+import { auth, Auth } from '../../lib/config/auth';
 
 const AuthService = new Elysia({ name: "Service.Auth"})
     .derive({ as: 'scoped' }, async ({cookie}) => {

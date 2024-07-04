@@ -1,6 +1,5 @@
 import {Lucia}  from "lucia";
-import { adapter, db, userTable } from "./db/schema";
-import { hash } from "bun";
+import { adapter, db, userTable } from "../db/schema";
 import { generateIdFromEntropySize } from "lucia";
 
 export const auth = new Lucia(adapter, {
@@ -33,10 +32,23 @@ export async function register(email: string, password: string){
             email: email,
             passwordHash: passwordHash
         })
-        // TODO COMPLETE
+        
+        const session = await auth.createSession(userId, {})
+        const sessionCookie = auth.createSessionCookie(session.id)
+        return new Response(null, {
+            status: 302,
+            headers: {
+                Location: "/",
+                "Set-Cookie": sessionCookie.serialize()
+            }
+        })
+
     }
     catch (err){
-        console.log(err)
+        console.error(err);
+        return new Response("Email already used", {
+            status: 400
+        })
     }
 }
 

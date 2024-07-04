@@ -1,7 +1,8 @@
 import {Elysia, t} from "elysia";
-import Render from "../services/renderService";
 import addQuote, { schema } from "../routes/addQuote";
 import AuthService from "../services/authService";
+import QuoteService from "../services/quoteService";
+import HomePage from "../views/home";
 
 
 const homeController = new Elysia({prefix: '/', name: "Controller.Home"})
@@ -9,8 +10,13 @@ const homeController = new Elysia({prefix: '/', name: "Controller.Home"})
     .guard({
         loginRequired: false
     })
-    .get("/", async ({Auth}) => {
-        return Render.root(Auth.user ?? null)
+    .get("/", async ({Auth, error}) => {
+        const quotes = await QuoteService.getAllQuotes();
+        console.log(error)
+        return HomePage(quotes, Auth.user ?? null)
+    })
+    .guard({
+        loginRequired: true
     })
     .post("/add-quote", async ({body}) => await addQuote(body), {
         body: schema
