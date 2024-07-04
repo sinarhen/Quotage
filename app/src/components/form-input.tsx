@@ -1,13 +1,12 @@
-import clsx from "clsx";
 import { cn } from "../../lib/config/utils";
 
 export const Input = ({
-    name, placeholder, className, type = "text"
+    name, placeholder, className, type = "text", required
 }: {
     type?: "number" | "search" | "button" | "time" | "image" | "text" | "checkbox" | "color" | "date" | "datetime-local" | "email" | "file" | "hidden" | "month" | "password" | "radio" | "range";
     name: string;
+    required?: boolean;
     placeholder: string;
-    label: string;
     className?: string
 }) => {
     return (

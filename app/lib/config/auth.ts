@@ -1,6 +1,7 @@
 import {Lucia}  from "lucia";
 import { adapter, db, userTable } from "../db/schema";
 import { generateIdFromEntropySize } from "lucia";
+import { Cookie } from "elysia";
 
 export const auth = new Lucia(adapter, {
     sessionCookie: {
@@ -17,39 +18,22 @@ export const auth = new Lucia(adapter, {
 
 export async function register(email: string, password: string){
     if (!password || typeof password !== "string" || password.length < 6) {
-		return new Response("Invalid password", {
-			status: 400
-		});
+		return null;
 	}
 
     
 	const passwordHash = (await Bun.password.hash(password)).toString();
 	const userId = generateIdFromEntropySize(10); // 16 characters long
 
-    try {
-        await db.insert(userTable).values({
-            id: userId,
-            email: email,
-            passwordHash: passwordHash
-        })
-        
-        const session = await auth.createSession(userId, {})
-        const sessionCookie = auth.createSessionCookie(session.id)
-        return new Response(null, {
-            status: 302,
-            headers: {
-                Location: "/",
-                "Set-Cookie": sessionCookie.serialize()
-            }
-        })
+    await db.insert(userTable).values({
+        id: userId,
+        email: email,
+        passwordHash: passwordHash
+    })
+    
+    const session = await auth.createSession(userId, {})
+    return auth.createSessionCookie(session.id)
 
-    }
-    catch (err){
-        console.error(err);
-        return new Response("Email already used", {
-            status: 400
-        })
-    }
 }
 
 // TODO extract 

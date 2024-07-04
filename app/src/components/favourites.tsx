@@ -2,11 +2,12 @@ import { Quote } from "../../lib/db/schema"
 import QuoteCard from "./quote-card"
 
 export default function Favourites({quotes}: {
-    quotes: Quote[]
+    quotes?: Quote[]
 }){
+    return (
     <div class="flex relative bg-white p-8 rounded-lg max-w-6xl border w-full h-full">
             <div id="favourite-cards-preview" class="w-1/2 h-full flex flex-col gap-y-2 overflow-y-scroll">
-              {quotes.map(quoteExample => <QuoteCard {...quoteExample} />)}
+              {quotes?.map(quoteExample => <QuoteCard {...quoteExample} />)}
             </div>
             <hr class="w-px h-full bg-gray-300/30 mr-12 " />
             <div class="w-1/2 flex-1 h-full flex justify-center items-center">
@@ -42,6 +43,6 @@ export default function Favourites({quotes}: {
 
               </div>
             </div>
-          </div>
+          </div>)
 
 }

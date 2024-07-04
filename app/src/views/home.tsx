@@ -1,6 +1,8 @@
 import { Quote } from "../../lib/db/schema";
 import AddQuoteForm from "../components/add-quote-form";
-import { Input } from "../components/form-input";
+import Button from "../components/button";
+import Favourites from "../components/favourites";
+import { Input, Label } from '../components/form-input';
 import Layout from "../components/layout";
 import ModalWrapper from "../components/modal-wrapper";
 import QuoteCard from "../components/quote-card";
@@ -14,15 +16,31 @@ const HomePage = async (quotes: Quote[],user: User | null) => {
       <Layout title="Quotage | Home Page">
         <>
         <div id="modal">
-          {/* <ModalWrapper>
+          <ModalWrapper>
             <div class="max-w-lg py-6 px-4 rounded-lg w-full bg-white h-full">
               <h1 class="italic lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-gray-600">Sign up</h1>
               <hr class="h-px bg-gray-400  mt-3 mb-4"/>
-              <form>
-                <Input type="text" name="email" label="Email" placeholder="blablabla@mail.com"/>
+              <form action={"/auth/register"} method="POST" class="flex flex-col gap-y-3">
+                <div>
+                  <Label forInput={"email"}>Email</Label>
+                  <Input required className="bg-gray-300" type="text" name="email" placeholder="blablabla@mail.com"/>
+                </div>
+
+                <div>
+                  <Label className="mt-3" forInput={"email"}>Password</Label>
+                  <Input required className="bg-gray-300" type="password" name="password"  placeholder=""/>
+                </div>
+                <Button type="submit">Sign in</Button>
               </form>
+
+                <p class="text-center">OR</p>
+                <div class="w-full">
+                  <Button className="bg-black  hover:bg-gray-900">Sign up</Button>
+
+                </div>
             </div>
-          </ModalWrapper> */}
+            {/* <Favourites quotes={quotes}/> */}
+          </ModalWrapper>
 
         </div>
 

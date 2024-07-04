@@ -5,14 +5,13 @@ import QuoteService from "../services/quoteService";
 import HomePage from "../views/home";
 
 
-const homeController = new Elysia({prefix: '/', name: "Controller.Home"})
+const HomeController = new Elysia({prefix: '/', name: "Controller.Home"})
     .use(AuthService)
     .guard({
         loginRequired: false
     })
     .get("/", async ({Auth, error}) => {
         const quotes = await QuoteService.getAllQuotes();
-        console.log(error)
         return HomePage(quotes, Auth.user ?? null)
     })
     .guard({
@@ -24,4 +23,4 @@ const homeController = new Elysia({prefix: '/', name: "Controller.Home"})
         console.log(error)
     })
     
-export default homeController
+export default HomeController

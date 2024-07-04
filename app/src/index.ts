@@ -3,14 +3,16 @@ import { Elysia } from "elysia";
 // Plugins
 import { html } from "@elysiajs/html";
 // Controllers
-import homeController from "./controllers/homeController";
+import HomeController from "./controllers/homeController";
 import staticPlugin from "@elysiajs/static";
+import { AuthController } from "./controllers/AuthController";
 
 const app = new Elysia();
 
 app.use(html());
 app.use(staticPlugin());
-app.use(homeController);
+app.use(HomeController);
+app.use(AuthController)
 
 app.listen(3000);
 
