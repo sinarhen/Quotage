@@ -1,11 +1,13 @@
 import { Quote } from "../../lib/db/schema"
 import QuoteCard from "./quote-card"
 
-export default function Favourites({quotes}: {
+export default function FavoritesModal({quotes, id, hidden}: {
     quotes?: Quote[]
-}){
+    id: string;
+    hidden?: boolean
+}): JSX.Element{
     return (
-    <div class="flex relative bg-white p-8 rounded-lg max-w-6xl border w-full h-full">
+    <div id={id} hidden={hidden} class="flex relative bg-white p-8 rounded-lg max-w-6xl border w-full h-full">
             <div id="favourite-cards-preview" class="w-1/2 h-full flex flex-col gap-y-2 overflow-y-scroll">
               {quotes?.map(quoteExample => <QuoteCard {...quoteExample} />)}
             </div>

@@ -30,8 +30,7 @@ export const AuthController = new Elysia({ prefix: "/auth"})
             return redirect("/")
         } catch (err)
         {
-            console.error(err)
-            error(400, "Something went wrong")
+            return redirect("/?error=Something went wrong")
         }
     }, {
         body: 'auth.sign'

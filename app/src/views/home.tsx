@@ -1,7 +1,8 @@
 import { Quote } from "../../lib/db/schema";
 import AddQuoteForm from "../components/add-quote-form";
+import SignupModal from "../components/auth/signup-modal";
 import Button from "../components/button";
-import Favourites from "../components/favourites";
+import FavoritesModal from "../components/favourites";
 import { Input, Label } from '../components/form-input';
 import Layout from "../components/layout";
 import ModalWrapper from "../components/modal-wrapper";
@@ -10,41 +11,32 @@ import QuoteCard from "../components/quote-card";
 import { User } from 'lucia';
 
 const HomePage = async (quotes: Quote[],user: User | null) => {
-  console.log("User is ", user)
+  const modalWrapperId = "modal-wrapper";
   
+  const authModalId = "auth-modal";
+  const favoritesModalId = "favorites-modal"
+  const openSignUpModal = `
+    document.getElementById("${modalWrapperId}")?.classList.remove("hidden")
+    document.getElementById("${authModalId}")?.removeAttribute("hidden")
+
+  `
+  
+  const openFavoritesModal = `
+    document.getElementById("${modalWrapperId}")?.classList.remove("hidden")
+    document.getElementById("${favoritesModalId}")?.removeAttribute("hidden")
+  `
+
   return (
       <Layout title="Quotage | Home Page">
         <>
-        <div id="modal">
-          <ModalWrapper>
-            <div class="max-w-lg py-6 px-4 rounded-lg w-full bg-white h-full">
-              <h1 class="italic lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-gray-600">Sign up</h1>
-              <hr class="h-px bg-gray-400  mt-3 mb-4"/>
-              <form action={"/auth/register"} method="POST" class="flex flex-col gap-y-3">
-                <div>
-                  <Label forInput={"email"}>Email</Label>
-                  <Input required className="bg-gray-300" type="text" name="email" placeholder="blablabla@mail.com"/>
-                </div>
-
-                <div>
-                  <Label className="mt-3" forInput={"email"}>Password</Label>
-                  <Input required className="bg-gray-300" type="password" name="password"  placeholder=""/>
-                </div>
-                <Button type="submit">Sign in</Button>
-              </form>
-
-                <p class="text-center">OR</p>
-                <div class="w-full">
-                  <Button className="bg-black  hover:bg-gray-900">Sign up</Button>
-
-                </div>
-            </div>
-            {/* <Favourites quotes={quotes}/> */}
+          <ModalWrapper isInitiallyOpened={true} id={modalWrapperId}>
+            <>
+              <SignupModal hidden id={authModalId}/>
+              <FavoritesModal hidden id={favoritesModalId} />
+          </>
           </ModalWrapper>
 
-        </div>
-
-        <div class="w-full h-full flex md:flex-row flex-col">
+        <div  class="w-full h-full flex md:flex-row flex-col">
           <aside class="h-full md:w-[30%] w-full relative">
                 <div class="h-full w-full bg-cover bg-[url('https://images.wallpaperscraft.com/image/single/notebook_emptiness_old_80056_3840x2400.jpg')]">
                   <div class="h-full px-8 py-12 flex-col flex justify-between w-full bg-black/70">
@@ -69,8 +61,9 @@ const HomePage = async (quotes: Quote[],user: User | null) => {
                       text-white
                       hover:text-gray-200  
                     "
+                    onclick={user ? openFavoritesModal : openSignUpModal}
                     >
-                      My favourites({quotes.length})
+                      {user ? "Favorites" : "Authenticate"}
                     </div>
                   </div>
          

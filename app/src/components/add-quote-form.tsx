@@ -24,7 +24,6 @@ const AddQuoteForm = ({
                 className="md:w-1/2 mb-3  "
                 name='author'
                 placeholder='Marcus Avrelius'
-                label='Author'    
             />
             
             <Label className="mt-3" forInput='quote'>
@@ -55,7 +54,6 @@ const AddQuoteForm = ({
                             name='birthYear'
                             type='number'
                             placeholder='-3200'
-                            label='Birth year'    
                         />
 
                 </div>
@@ -68,7 +66,6 @@ const AddQuoteForm = ({
                             name='deathYear'
                             type='number'
                             placeholder='1223'
-                            label='Death year'    
                         />
                 </div>
                 

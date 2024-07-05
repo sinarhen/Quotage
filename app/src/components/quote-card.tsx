@@ -1,4 +1,4 @@
-import { Quote } from "../../lib/db/quotes";
+import { Quote } from "../../lib/db/schema";
 
 export default function QuoteCard({
     quote,
