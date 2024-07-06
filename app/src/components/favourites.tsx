@@ -7,7 +7,7 @@ export default function FavoritesModal({quotes, id, hidden}: {
     hidden?: boolean
 }): JSX.Element{
     return (
-    <div id={id} hidden={hidden} class="flex relative bg-white p-8 rounded-lg max-w-6xl border w-full h-full">
+    <div id={id} class={(hidden ? "hidden " : "") + " flex relative bg-white p-8 rounded-lg max-w-6xl border w-full h-full"}>
             <div id="favourite-cards-preview" class="w-1/2 h-full flex flex-col gap-y-2 overflow-y-scroll">
               {quotes?.map(quoteExample => <QuoteCard {...quoteExample} />)}
             </div>

@@ -1,6 +1,6 @@
 import { Quote } from "../../lib/db/schema";
 import AddQuoteForm from "../components/add-quote-form";
-import SignupModal from "../components/auth/signup-modal";
+import AuthModal from "../components/auth/signup-modal";
 import Button from "../components/button";
 import FavoritesModal from "../components/favourites";
 import { Input, Label } from '../components/form-input';
@@ -9,6 +9,7 @@ import ModalWrapper from "../components/modal-wrapper";
 import QuoteCard from "../components/quote-card";
 // import { quotesExamples } from "../config/test";
 import { User } from 'lucia';
+import { AuthController } from "../controllers/AuthController";
 
 const HomePage = async (quotes: Quote[],user: User | null) => {
   const modalWrapperId = "modal-wrapper";
@@ -17,21 +18,24 @@ const HomePage = async (quotes: Quote[],user: User | null) => {
   const favoritesModalId = "favorites-modal"
   const openSignUpModal = `
     document.getElementById("${modalWrapperId}")?.classList.remove("hidden")
-    document.getElementById("${authModalId}")?.removeAttribute("hidden")
-
+    document.getElementById("${authModalId}")?.classList.remove("hidden")
   `
   
   const openFavoritesModal = `
     document.getElementById("${modalWrapperId}")?.classList.remove("hidden")
-    document.getElementById("${favoritesModalId}")?.removeAttribute("hidden")
+    document.getElementById("${favoritesModalId}")?.classList.remove("hidden")
   `
-
   return (
       <Layout title="Quotage | Home Page">
         <>
           <ModalWrapper isInitiallyOpened={true} id={modalWrapperId}>
             <>
-              <SignupModal hidden id={authModalId}/>
+              <AuthModal 
+                loginAction="/auth/login"
+                loginMethod="POST"
+                registerAction={"/auth/register"} 
+                registerMethod="POST"
+                hidden id={authModalId}/>
               <FavoritesModal hidden id={favoritesModalId} />
           </>
           </ModalWrapper>
