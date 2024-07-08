@@ -14,7 +14,7 @@ const config: Config = {
 };
 const client = createClient(config);
 
-export const db = drizzle(client);
+
 
 export const quotes = sqliteTable("quotes", {
     id: text("id"),
@@ -46,5 +46,11 @@ export const sessionTable = sqliteTable("session", {
 		.references(() => userTable.id),
 	expiresAt: integer("expires_at").notNull()
 });
-
+export const db = drizzle(client, {
+    schema: {
+        quotes,
+        userTable,
+        sessionTable,
+    }
+});
 export const adapter = new DrizzleSQLiteAdapter(db, sessionTable, userTable);

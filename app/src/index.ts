@@ -5,7 +5,7 @@ import { html } from "@elysiajs/html";
 // Controllers
 import HomeController from "./controllers/HomeController";
 import staticPlugin from "@elysiajs/static";
-import { AuthController } from "./controllers/AuthController";
+import { AuthController } from "./controllers/auth/AuthController";
 
 const app = new Elysia();
 
