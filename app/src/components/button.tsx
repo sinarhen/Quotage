@@ -3,12 +3,16 @@ import { cn } from "../../lib/config/utils";
 export default function Button({
     children,
     type = "button",
+    id,
+    disabled,
     hxGet,
     hxPost,
     hxTrigger,
     hxSwap, 
     className
 }: {
+    id?: string,
+    disabled?: boolean;
     children: JSX.Element; 
     type?: string; className?: string | null;
     hxGet?: string;
@@ -18,6 +22,8 @@ export default function Button({
 }){
     return (
         <button
+            id={id}
+            disabled={disabled}
             hx-get={hxGet}
             hx-post={hxPost}
             hx-trigger={hxTrigger}

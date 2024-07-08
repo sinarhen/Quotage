@@ -31,10 +31,6 @@ const HomePage = async (quotes: Quote[],user: User | null) => {
           <ModalWrapper isInitiallyOpened={true} id={modalWrapperId}>
             <>
               <AuthModal 
-                loginAction="/auth/login"
-                loginMethod="POST"
-                registerAction={"/auth/register"} 
-                registerMethod="POST"
                 hidden id={authModalId}/>
               <FavoritesModal hidden id={favoritesModalId} />
           </>
